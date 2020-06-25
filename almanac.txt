@@ -1,0 +1,632 @@
+CSS Display
+- inline
+- inline-block
+contoh : div { display: inline-block; }
+(atau dapat display: flex | grid | float)
+- block
+- none
+
+CSS Dimensi (div, class)
+- Width (px absolut, % relatif terhadap pembukus)
+- Height
+
+CSS Overflow (mengatur element yang keluar dari orangtua)
+- visible (normal, akan diperlihatkan)
+- auto (otomatis scroll)
+- hidden (yang keluar disembunyikan)
+
+CSS Box Model (elemen yang dibuat kotak area)
+- Margin (area transparan di luar border)
+negatif margin, contoh div { margin-top: -100px; }
+shorthand, contoh div { 50px (atas-bawah) 100px (kiri-kanan) 20px (bawah) 50px (kiri); }
+
+- Padding (area transparan di dalam kotak dan border)
+padding tidak bisa auto
+padding menambah ukuran box area
+
+- Border (area batas disekeliling konten)
+border: 5px (tebal) solid (style) white (warna);
+dotted (titik)
+dashed (garis2)
+double (2border)
+Border menambah ukuran box area
+
+Total dimensi = width/height + padding + border (kalkulasi demensi)
+
+CSS Box Sizing (membantu kalkulasi demensi) mengatur kiri-kanan
+contoh .div { box-sizing: border-box; }
+
+CSS Box Model
+- CSS Reset contoh * { margin: 0; padding: 0; } (tidak baik digunakan)
+
+memberi hover pada nav
+.header a {
+text-decoration: none;
+color: salmon;
+padding: 3px;
+}
+.header a:hover {
+background-color: grey;
+color:white;
+}
+
+mengatur posisi background image
+height: 300px;
+background-image: ;
+background-size: cover;
+background-position: 0 (horizontal) 0 (vertikal);
+
+CSS Float (mengatur posisi sebuah elemen)
+- left (elemen berada di kiri)
+contoh .dua { width: 100px; height: 100px; float: left; } (berada di belakang elemen)
+- right (elemen berada di kanan)
+keuntungan : text wrapping (teks mengelilingi gambar) image gallery (gambar menjadi galeri)
+multi-column layout (membuat halaman memiliki beberapa kolom)
+
+- text-wrapping contoh img { float: left; }
+
+CSS Clear (untuk membersihkan float. float harus dibersihkan)
+- teknik mikro clearfix
+masukan class cf disalah satu container/section
+
+CSS Position
+- static
+- relative
+contoh .div { position: relative; } (maka akan naik 1 dimensi)
+top: 30px (maka akan bergeser kebawah tanpa mempengaruhi elemen lain)
+
+- absolute
+contoh .div { position: absolute; } (maka akan naik 1 dimensi dan tempat sebelumnya dianggap tidak ada)
+elemen akan berbeda dimensi dengan semua elemen yang ada (body, container)
+maka berikan "position: relative" pada orangtua nya
+
+- fixed
+contoh .div { position: fixed; } (maka akan naik 1 demensi dan elemen akan nyangkut di body)
+biasanya digunakan pada navbar top yang mengikuti saat di scroll
+
+CSS z-index (bisa digunakan untuk mengatur tumpukan yg non-static)
+contoh .div { position:** z-index: 1; } (maka elemen akan naik ke paling depan)
+z-index: 9999; membuat elemen menjadi paling depan
+
+CSS Position (top, left, right, bottom)
+contoh .div { (membuat sebuah kotak di depan halaman)
+background-color: black;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+opacity: 0.7; (membuat transparan)
+
+.close { (membuat tombol close sebuah kotak)
+width: 30px;
+height: 30px
+background-color;
+border: 3px solid black;
+border-radius: 50%;
+position: absolut;
+top: -15px;
+right: -15px;
+
+.container {
+position: relative (membuat agar kotak yang dibuat mengikuti container)
+} https://www.youtube.com/watch?v=uS4MoynBCxc&list=PLFIM0718LjIUu4Ju9GUL5zpLcuq08TKYr&index=15
+
+
+
+
+
+CSS Dasar
+- Text Styling
+color, text-align (mengatur rata), text-transform (mengubah jenis huruf menjadi huruf besar/kecil)
+letter-spacing (spasi antar huruf), word-spacing (spasi antar kata)
+
+- Selector
+elemen html (body, div, h1, dll) contoh body, h1, h2 { color: red; }
+contoh lain = ul li a { color: red; } (spasi artinya di dalam)
+
+id ( id="contoh" -> #contoh) css usahakan jangan pakai id (kecuali link)
+> sebuah elemen hanya boleh 1 id
+> setiap halaman hanya boleh 1 elemen dengan id tersebut
+> dapat digunakan sebagai penanda halaman untuk link
+> digunakan juga untuk javascript
+> sebaiknya tidak digunakan untuk css (beban nya lebih berat)
+(berat level nya = 1. elemen html (body, div, dll) 2. class 3. id)
+
+class ( class="contoh" -> .contoh )
+- :link (style default pada sebuah link)
+- :hover (style kitak mouse berada diatas sebuah link/elemen)
+- :active (style ketika sebuah link di-klik)
+- :visited (style ketika sudah di-klik dan berubah warna menjadi ungu)
+
+- first-child (anak pertama)
+contoh li:first-child a { color: green; }
+- last-child (anak terakhir)
+- nth-child (anak tertentu sesuai yg dipilih)
+contoh li:nth-child(5) a { color: red; }
+
+
+untuk sebuah elemen :
+- first-of-type (memilih elemen pertama dari sebuah jenis / tipe tag)
+- last-of-type (memilih elemen terakhir dari sebuah jenis / tipe tag)
+
+CSS Inheritance (pewarisan) = sebuah elemen mewarisi beberapa nilai dari orangtua nya
+a { color: inherit; } (mewarisi dari orangtuanya yang bermasalah)
+
+CSS Specificity (selector css memiliki berat yang berbeda. Berat tersebut menentukan
+seberapa spesifik sebuah elemen dapat dipilih oleh selector
+contoh :
+ul#sarapan li {
+color: green;
+}
+
+.favorit {
+color: red;
+}
+
+maka color green akan menang
+
+solusinya = buat elemen yang di inginkan menjadi spesifik lagi
+tambahkan beban pada elemen tersebut agar semakin berat
+
+ul#sarapan li.favorit {
+color: red;
+}
+
+atau solusi lain = tambahkan !important setelah value property
+contoh
+.favorit {
+color: red !important;
+}
+
+atau contoh lain
+ul#sarapan {
+color: red;
+}
+
+li.favorit {
+color: green;
+}
+
+maka elemen li yang memiliki class favorit akan berwana hijau
+karena li.favorit lebih spesifik dari pada ul#sarapan
+
+
+
+[ CSS Grid, Flex-Box, Float ]
+
+
+
+
+Flex Box = Model Layout 1 dimensi yg dapat mengatu jarak dan dapat dijajarkan
+antar item dalam sebuah container
+- main axis : sumbu utama dari sebuah container
+- main-start | main-end : mulai dan berakhirnya items
+- main size : ukuran dari container yg akan membuat dimensi / sesuai dengan container nya
+Property = .container { display: flex;
+
+flex-direction: row | row-reverse (kanan ke kiri) / column | column-reverse;
+
+flex-wrap: wrap | nowrap | wrap-reverse; (maka item akan turun kebawah apabila container penuh)
+
+justify-content: flex-start; (default)
+flext-end
+center
+space-between (item paling kiri tengah dan paling kanan)
+space-around (membagi rata sisi item yang tengah)
+space-evenly (membagi rata semua sisi item)
+
+align-items: flex-start; (default) mengatur penjajaran items terhadap cross axis
+flex-end
+center (item / text di berada di tengah)
+stretch (maka item akan menyesuaikan dengan container secara vertikal) tanpa menambahkan height di item
+baseline (maka text didalam item akan sejajar ditengah sesuai dengan container)
+
+align-content: flex-start; (default) mengatur jarak antar item terhadap cross axis (kebawah) berlaku hanya lebih dari 1 baris
+flex-end (item berada dibawah)
+center (item berada ditengah)
+stretch (seluruh item menyesuaikan dengan container)
+space-between (terdapat space antar item atas dan bawah)
+space-around (terdapat space antar item dan sejajar dengan container ditengah2)
+
+order = contoh .satu { order: 3; } (memindahkan item tanpa mengubah html)
+skala 1-9999
+flex-grow = contoh .satu { flex-grow: 3; } (untuk mengatur ukuran besar item nya)
+
+align-self (mengatur sebuah item yang spesifik terhadap cross axis / kebawah)
+.item { align-self: flex-start | center | stertch | dll;
+khusus untuk 1 item saja
+
+
+
+
+
+CSS Grid = Modul css baru untuk mendefinisikan sistem layout berbentuk grid dalam 2 dimensi
+(baris dan kolom). CSS Grid dibuat untuk lebih kompleks
+.container {
+ display: grid; 
+
+satuan fr (fraction)
+
+CSS Grid menyimpan css lebih flexible (hanya elemen html saja) daripada menggunakan flex-box
+dengan CSS Grid dapat mengatur Responsive nya
+
+Istilah di CSS Grid
+- Grid container = elemen pembungkus grid. menambahkan display: grid;
+
+- Grid item = elemen yang berada (1 level) didalam grid container
+
+- Grid line = garis horizontal (kolom) / vertikal (baris)
+yang memisahkan grid menjadi beberapa bagian dan ditandai dengan angka
+
+- Grid cell = perpotongan/pertemuan antara baris dan kolom di dalam grid
+ex. dalam excel disebut cell
+
+- Grid area = kumpulan lebih dari satu grid cell yang membentuk kotak
+
+- Grid track = ukuran/jarak antara 2 grid line, bisa horizontal atau vertikal
+atau disebut dengan "ukuran sell"
+
+- Grid gap = jarak antara grid track / cell
+
+Properti di CSS Grid
+> di Container (kolom dan baris)
+contoh :
+.container {
+grid-template-columns: 100px 25% 200px; (untuk ukuran mengatur kolom)
+grid-template-rows: 20px auto 30px; (untuk ukuran mengatur baris)
+}
+
+> explicit dan implicit grid
+- explicit = menuliskan ukuran secara jelas untuk menentukan grid (kolom dan baris)
+
+- implicit = menuliskan ukuran secara otomatis untuk menentukan grid (kolom dan baris)
+
+> auto columns | auto rows = menangani item yang impicit (sisa dari explicit)
+.container {
+grid-template-columns: 100px 50px;
+grid-template-rows: 50px 100px 150px;
+grid-auto-rows: 200px;
+}
+
+> grid-auto-flow = mengatur penempatan item/cell pada grid track
+termasuk yang ditulis secara implicit
+.container {
+grid-template-columns: 100px 50px;
+grid-template-rows: 50px 30px;
+grid-auto-flow: column;
+}
+
+> Grid values
+- line-name = nama yang bisa diberikan pada track
+contoh
+.container {
+grid-template-columns: [awal] 100px [kolom2] 50px;
+grid-template-rows: [baris-awal] 50px [baris2] 30px;
+}
+
+- fr (Fraction) = sangat berguna untuk responsive
+contoh
+.container {
+grid-template-columns: 1fr 2fr 3.5fr; (1 bagian | 2kali bagian | 3set bagian)
+grid-template-rows: 2fr 1fr 5fr;
+}
+
+> Special Fungction dan Keyword
+- repeat() = menentukan ukuran grid track secara berulang
+tidak perlu menuliskan ukuran columns/rows satu per satu
+contoh
+.container {
+grid-template-columns: repeat(9, 1fr);
+ grid-template-columns: repeat(3, 1fr) repeat(6, 1fr);
+}
+
+> min-content | max-content
+menentukan seberapa besar ukuran grid track berdasarkan content pada sebuah item
+contoh
+.container {
+grid-template-columns: 1fr max-content 1fr; (kata/item nya akan seluruh jadi satu)
+grid-template-columns: 1fr min-content 1fr; (kata/item nya akan terpecah)
+}
+
+> auto-fill | auto-fit
+menentukan jumlah item untuk berada pada grid track
+contoh
+.container {
+grid-template-columns: repeat(auto-fill, 100px); (secara otomatis menentukan kolom didalam container/wadah) #responsive
+grid-template-columns: repeat(auto-fit, 100px); (sama dengan fill. tetapi fit cocok untuk item yang sedikit) #responsive
+}
+
+> minmax()
+menentukan ukuran minimal dan maksimal dari grid track
+contoh
+.container {
+grid-template-columns: 1fr minmax(200px, 300px) 1fr; (membatasi suatu kolom agar ukuran nya tetap)
+}
+
+membuat item/kotak menjadi responsive dengan menggunakan grid
+        .gallery {
+            width: 80%;
+            margin: 20px auto;
+            border: 10px solid white;
+            list-style: none;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	    grid-gap: 5px; (memberkan batasan antar gambar/item)
+        }
+
+> grid-template-area
+mendifinisikan grid template menggunakan nama dari area yang ditulis
+pada property grid-area pada item
+contoh
+.container {
+            width: 60%;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-areas:
+                'header header header'
+                'sidebar content content'
+                'sidebar content content'
+                'footer footer footer';
+        }
+
+maka disetiap class nya di beri grid-area
+        .header {
+            grid-area: header;
+            background-color: skyblue;
+        }
+
+untuk menjadikan responsive maka tambahkan
+        @media screen and (min-width: 576px) {
+            .container {
+                grid-template-areas:
+                    'header header header'
+                    'sidebar content content'
+                    'sidebar content content'
+                    'footer footer footer';
+            }
+        }
+
+dan sesuaikan kembali .container nya sesuai dengan keinginan
+
+> grid-template
+shorthand untuk : grid-template-row | grid-template-columns / grid-template-areas
+contoh :
+.container {
+            width: 60%;
+            margin: 50px auto;
+            display: grid;
+            grid-template: 'header header header'50px (baris atas)
+            'footer footer footer'100px / 1fr 2fr 3fr; (baris bawah) / (tiga kolom)
+        }
+
+
+atau bisa ditambahakn line-name
+.container {
+            width: 60%;
+            margin: 50px auto;
+            display: grid;
+            grid-template: [baris-mulai] 'header header header'50px (baris atas)
+            [baris1-akhir baris2-awal] 'footer footer footer'100px [baris2-akhir] / 1fr 2fr 3fr; (baris bawah) / (tiga kolom)
+        }
+
+
+> grid-gap
+cara lama
+- grid-column-gap (untuk horizontal/kolom saja)
+- grid-row-gap (untuk vertikal/baris saja)
+
+- column-gap
+- row-gap
+menentukan jarak antara baris atau kolom
+contoh
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 5px;
+            row-gap: 5px;
+        }
+
+untuk kedua nya :
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+
+> grid
+shothand untuk mendefinisikan properti2 dalam satu deklarasi :
+grid-template-rows, grid-template-columns, grid-template-areas
+grid-auto-rows, grid-auto-columns, grid-auto-flow (sesuai urutan)
+
+
+
+> Grid Alignment
+- justify-items
+mensejajarkan grid-items pada sumbu horizontal (kolom)
+contoh
+.container {
+justify-items: stretch; } (hanya berlaku ketika item tidak diberi width/lebar)
+
+apabila item sudah diberi widht maka. justify-items = center, left, right, dll
+
+- align-items
+mensejajarkan grid-items pada sumbu vertikal (baris)
+contoh nya sama dengan justify-items
+salah satunya dapat digunakan pada penempatan logo
+
+- place-items
+shorthand untuk mnulis justify-items dan align-items dengan satu deklarasi
+contoh
+.container {
+place-items: center end; (justify-item | align-items)
+}
+
+atau place-items: center; (artinya dua2nya ditengah)
+
+- justify-content
+untuk mengatur seluruh grid container pada sumbu horizontal (kolom)
+contoh
+        .container {
+            border: 3px solid red;
+            margin: auto;
+            width: 80%;
+            display: grid;
+            grid-template-rows: 80px 80px; (hanya berlaku pada fixed (px)
+            grid-template-columns: 100px 100px 100px; (hanya berlaku pada fixed (px)
+            gap: 5px;
+            justify-content: center;
+        }
+start (item berada sebelah kiri)
+end (item berada sebelah kanan)
+center (item berada ditengah)
+stretch (item penuh secara horizontal/kolom)
+space-around (item diberi jarak setengah dari tengah2nya)
+space-between (item diberi jarak ditengah2 tetapi bagian kiri/kanan nya tidak ada space)
+space-evenly (item diberi jarak semua sama)
+
+- align-content
+untuk mengatur seluruh grid container pada sumbu vertikal (baris)
+contoh nya sama dengan justify-content
+
+start (item berada diatas)
+end (item berada dibawah)
+center (item berada ditengah)
+stretch (item memenuhi container secara vertikal)
+space-around (item diberi jarak setengah dari atas dan bawahnya)
+space-between (item diberi jarak ditengah2 tetapi bagian atas/bawahnya tidak ada space)
+space-evenly (item diberi jarak semua sama)
+
+- place-content
+shorthand untuk menulis justify-content dan align-content dalam satu deklarasi
+contoh
+.container {
+place-content: center end; (justify-content | align-content)
+}
+
+atau place-content: center;
+
+
+> di Item (kolom dan baris)
+- grid-column-start
+- grid-column-end
+- grid-row-start
+- grid-row-end
+menentukan tempat dari grid item dengan mengacu pada nomor/nama grid line yang spesifik
+
+contoh
+        .my-item {
+            grid-column-start: 2; (kolom ke 2)
+            grid-column-end: 4; (kolom ke 4)
+            grid-row-start: 2; (baris ke 2)
+            grid-row-end: 4; (baris ke 4)
+}
+<nomor> | <nama> mengacu pada nomor/nama yang diberi pada grid line
+span <nomor> item akan memanjang/melebar sampai sejumlah nomor (disarankan menggunakan nomor)
+1 2 3 4 -1 -2 -3 -4
+span <nama> item akan memanjang/melebar sampai sejumlah nama
+
+.my-item {
+            grid-column-start: 1; (kolom ke 1)
+            grid-column-end: span 2; (dari kolom 1 tambah 2 kolom)
+            grid-row-start: 1; (baris ke 1)
+            grid-row-end: span 2; (dari baris 1 tambah 2 kolom)
+}
+
+contoh menggunakan nama :
+.container {
+grid-template-columns: [satu] minmax(200px, 300px) [dua] 1fr [tiga] 1fr [empat];
+grid-template-rows: [baris1] 100px [baris2] 100px [baris3] 100px [baris4];
+}
+
+.my-item {
+        grid-column-start: satu;
+        grid-column-end: empat;
+        grid-row-start: baris1;
+        grid-row-end: baris4;
+}
+
+
+
+- grid-column
+- grid-row
+shorthand untuk start dan end pada grid-column dan grid-row (menyingkat 4 properti diatas)
+grid-column: <start-line> / <end-line> | <start-line> / span <value>;
+grid-row: <start-line> / <end-line> | <start-line> / span <value>;
+
+contoh
+.my-item {
+        grid-column: 1 / span 2; (dari kolom 2 tambah 2)
+        grid-row: 1 / span 2; (dari baris 2 tambah 2)
+}
+
+
+- grid-area
+menentukan nama area pada item sesuai dengan template yang sudah dibuat
+sebelumnya melalui properti grid-template-areas
+bisa digunakan sebagai shorthand untuk grid-column-start, grid-column-end, grid-row-start, grid-row-end
+dalam satu deklarasi
+grid-area: <nama> | <row-start> / <column-start> / <row-end> / <column-end>; (urutan tidak boleh tertukar)
+
+contoh menggunakan <nama>
+grid-template-areas:
+          'header header header'
+          'sidebar content content'
+          'footer footer footer';
+
+.header {
+grid-area: header;
+background-color: salmon;
+}
+
+contoh lain
+.container {
+grid-template-columns: [satu] minmax(200px, 300px) [dua] 1fr [tiga] 1fr [empat];
+grid-template-rows: [baris1] 100px [baris2] 100px [baris3] 100px [baris4];
+}
+
+.my-item {
+grid-area: 2 / 1 / 4 / 3;
+}
+
+
+- justify-self
+mengatur posisi item pada sebuah cell terhadap sumbu horizontal (kolom)
+justify-self: start; (maka item berada sebelah kiri *pada kolom pertama*)
+end (maka item berada sebelah kanan *pada kolom pertama*)
+center (maka item berada di tengah kolom)
+stretch (maka item akan memenuhi kolom pertama)
+
+contoh
+.my-item {
+justify-self: center;
+}
+
+- align-self
+mengatur posisi item pada sebuah cell terhadap sumbu vertikal (baris)
+align-self: start; (maka item berada diatas *pada kolom pertama*)
+end (maka item berada dibawah *pada kolom pertama*)
+center (maka item berada di tengah kolom)
+stretch (maka item akan memenuhi kolom pertama)
+
+contoh
+.my-item {
+align-self: center;
+}
+
+
+- place-self
+shorthand posisi item pada sebuah cell terhadap justify-self dan align-self
+dalam satu deklarasi
+place-self: <align-self> <justify-self>; (verikal dan horizontal)
+
+contoh
+.my-item {
+place-self: center center; (apabila nilainya sama dapat ditulis 1 saja)
+}
